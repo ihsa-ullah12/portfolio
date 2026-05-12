@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ihsanullah — AI & ML Engineer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#03040a;
+  --s1:#0a0d18;
+  --s2:#0e1220;
+  --s3:#121828;
+  --border:rgba(255,255,255,0.06);
+  --border2:rgba(255,255,255,0.11);
+  --border3:rgba(255,255,255,0.18);
+  --a1:#6ee7b7;
+  --a2:#38bdf8;
+  --a3:#a78bfa;
+  --a4:#fb923c;
+  --a5:#f472b6;
+  --text:#dde4f0;
+  --muted:#6b7a99;
+  --muted2:#3d4a63;
+}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--a1),var(--a2));border-radius:2px}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.9rem 6%;
+  background:rgba(3,4,10,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Outfit',sans-serif;font-weight:900;font-size:1.05rem;
+  background:linear-gradient(135deg,var(--a1),var(--a2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-0.5px;
+}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--a1)}
+.nav-cta{font-size:0.8rem;font-weight:600;padding:0.45rem 1.1rem;border-radius:6px;border:1px solid rgba(110,231,183,0.35);color:var(--a1);text-decoration:none;transition:all 0.2s;background:rgba(110,231,183,0.05)}
+.nav-cta:hover{background:rgba(110,231,183,0.12)}
+
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 6% 5rem;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(110,231,183,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(110,231,183,0.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.orb1{width:600px;height:600px;background:rgba(110,231,183,0.07);top:-150px;right:-150px;animation:drift1 12s ease-in-out infinite}
+.orb2{width:500px;height:500px;background:rgba(56,189,248,0.06);bottom:-100px;left:10%;animation:drift2 15s ease-in-out infinite}
+.orb3{width:350px;height:350px;background:rgba(167,139,250,0.05);top:30%;left:40%;animation:drift1 18s ease-in-out infinite reverse}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-40px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,30px)}}
+
+.hero-inner{position:relative;z-index:2;max-width:860px}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border-radius:100px;margin-bottom:2rem;background:rgba(110,231,183,0.06);border:1px solid rgba(110,231,183,0.2);font-size:0.72rem;font-weight:600;color:var(--a1);letter-spacing:0.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;animation:up 0.7s ease both}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--a1);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(110,231,183,0.4)}50%{box-shadow:0 0 0 6px rgba(110,231,183,0)}}
+h1.hero-name{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(3.5rem,9vw,7rem);line-height:0.9;letter-spacing:-4px;margin-bottom:1.5rem;animation:up 0.7s 0.1s ease both}
+.name-plain{color:var(--text)}
+.name-grad{background:linear-gradient(135deg,var(--a1) 0%,var(--a2) 50%,var(--a3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-role{font-family:'JetBrains Mono',monospace;font-size:0.9rem;letter-spacing:0.04em;color:var(--muted);margin-bottom:1rem;animation:up 0.7s 0.15s ease both}
+.hero-role span{color:var(--a2)}
+.hero-desc{font-size:1.05rem;font-weight:300;color:var(--muted);max-width:620px;margin-bottom:2.5rem;line-height:1.75;animation:up 0.7s 0.2s ease both}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:up 0.7s 0.25s ease both}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:0.8rem 1.8rem;border-radius:8px;font-size:0.88rem;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all 0.25s;font-family:'Space Grotesk',sans-serif}
+.btn-g{background:linear-gradient(135deg,var(--a1),var(--a2));color:#03040a}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(110,231,183,0.3)}
+.btn-o{background:transparent;color:var(--text);border:1px solid var(--border3)}
+.btn-o:hover{border-color:var(--a1);color:var(--a1);transform:translateY(-2px)}
+.hero-kpis{display:flex;gap:3rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--border);animation:up 0.7s 0.35s ease both}
+.kpi-num{font-family:'Outfit',sans-serif;font-weight:800;font-size:2.4rem;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:4px}
+.kpi-label{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:500}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+.wrap{max-width:1140px;margin:0 auto;padding:5.5rem 6%}
+.sec-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--a1);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem}
+h2.sec-title{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:-1.5px;margin-bottom:0.75rem}
+.sec-sub{font-size:0.95rem;color:var(--muted);margin-bottom:3rem;max-width:520px}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.vis{opacity:1;transform:none}
+
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:start}
+.about-p{font-size:0.97rem;color:var(--muted);line-height:1.82;margin-bottom:1rem}
+.info-cards{display:flex;flex-direction:column;gap:0.6rem}
+.ic{display:flex;align-items:center;gap:12px;padding:0.65rem 1rem;border-radius:10px;background:var(--s1);border:1px solid var(--border);font-size:0.85rem;color:var(--muted);transition:border-color 0.2s}
+.ic:hover{border-color:var(--border2)}
+.ic-icon{width:30px;height:30px;border-radius:7px;background:rgba(110,231,183,0.08);border:1px solid rgba(110,231,183,0.15);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0}
+.ic b{color:var(--text);font-weight:500}
+
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem}
+.sc{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.25rem;transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;position:relative;overflow:hidden}
+.sc:hover{border-color:rgba(110,231,183,0.3);transform:translateY(-4px);box-shadow:0 16px 48px rgba(110,231,183,0.07)}
+.sc-head{display:flex;align-items:center;gap:8px;margin-bottom:0.8rem}
+.sc-icon{font-size:1.1rem}
+.sc-cat{font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:600;color:var(--a1);letter-spacing:0.1em;text-transform:uppercase}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:0.73rem;padding:3px 9px;border-radius:100px;background:rgba(255,255,255,0.04);border:1px solid var(--border2);color:var(--muted);font-family:'JetBrains Mono',monospace;transition:border-color 0.2s,color 0.2s}
+.tag.hot{background:rgba(110,231,183,0.06);border-color:rgba(110,231,183,0.2);color:var(--a1)}
+
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.pc{background:var(--s1);border:1px solid var(--border);border-radius:18px;padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s}
+.pc-glow{position:absolute;top:0;left:0;right:0;height:1px;opacity:0;transition:opacity 0.3s}
+.pc:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(0,0,0,0.4)}
+.pc:hover .pc-glow{opacity:1}
+.g-teal .pc-glow{background:linear-gradient(90deg,transparent,var(--a1),transparent)}
+.g-blue .pc-glow{background:linear-gradient(90deg,transparent,var(--a2),transparent)}
+.g-purple .pc-glow{background:linear-gradient(90deg,transparent,var(--a3),transparent)}
+.g-orange .pc-glow{background:linear-gradient(90deg,transparent,var(--a4),transparent)}
+.g-pink .pc-glow{background:linear-gradient(90deg,transparent,var(--a5),transparent)}
+.g-teal:hover{border-color:rgba(110,231,183,0.25)}
+.g-blue:hover{border-color:rgba(56,189,248,0.25)}
+.g-purple:hover{border-color:rgba(167,139,250,0.25)}
+.g-orange:hover{border-color:rgba(251,146,60,0.25)}
+.g-pink:hover{border-color:rgba(244,114,182,0.25)}
+.pc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem}
+.pc-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0}
+.i-teal{background:rgba(110,231,183,0.1);border:1px solid rgba(110,231,183,0.2)}
+.i-blue{background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.2)}
+.i-purple{background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2)}
+.i-orange{background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.2)}
+.i-pink{background:rgba(244,114,182,0.1);border:1px solid rgba(244,114,182,0.2)}
+.pc-badge{font-size:0.65rem;font-weight:600;padding:3px 9px;border-radius:100px;font-family:'JetBrains Mono',monospace;letter-spacing:0.06em}
+.badge-teal{background:rgba(110,231,183,0.08);border:1px solid rgba(110,231,183,0.2);color:var(--a1)}
+.badge-blue{background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);color:var(--a2)}
+.badge-purple{background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);color:var(--a3)}
+.badge-orange{background:rgba(251,146,60,0.08);border:1px solid rgba(251,146,60,0.2);color:var(--a4)}
+.badge-pink{background:rgba(244,114,182,0.08);border:1px solid rgba(244,114,182,0.2);color:var(--a5)}
+.pc-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.3rem;color:var(--text)}
+.pc-type{font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:0.75rem;letter-spacing:0.04em}
+.pc-desc{font-size:0.86rem;color:var(--muted);line-height:1.68;margin-bottom:1rem}
+.pc-bullets{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:1.1rem}
+.pc-bullets li{font-size:0.81rem;color:var(--muted);padding-left:16px;position:relative;line-height:1.55}
+.pc-bullets li::before{content:'▸';position:absolute;left:0;font-size:0.7rem;top:2px}
+.g-teal .pc-bullets li::before{color:var(--a1)}
+.g-blue .pc-bullets li::before{color:var(--a2)}
+.g-purple .pc-bullets li::before{color:var(--a3)}
+.g-orange .pc-bullets li::before{color:var(--a4)}
+.g-pink .pc-bullets li::before{color:var(--a5)}
+.pc-tech{display:flex;flex-wrap:wrap;gap:5px}
+.pt{font-size:0.68rem;padding:2px 9px;border-radius:100px;font-family:'JetBrains Mono',monospace;letter-spacing:0.03em}
+.pt-teal{background:rgba(110,231,183,0.06);border:1px solid rgba(110,231,183,0.18);color:var(--a1)}
+.pt-blue{background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.18);color:var(--a2)}
+.pt-purple{background:rgba(167,139,250,0.06);border:1px solid rgba(167,139,250,0.18);color:var(--a3)}
+.pt-orange{background:rgba(251,146,60,0.06);border:1px solid rgba(251,146,60,0.18);color:var(--a4)}
+.pt-pink{background:rgba(244,114,182,0.06);border:1px solid rgba(244,114,182,0.18);color:var(--a5)}
+
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:3.5rem}
+.mcard{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.25rem;text-align:center}
+.mcard-num{font-family:'Outfit',sans-serif;font-weight:800;font-size:2rem;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.mcard-label{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em}
+
+.edu-list{display:flex;flex-direction:column}
+.edu-row{display:grid;grid-template-columns:160px 1fr;gap:2.5rem;padding:2rem 0;border-bottom:1px solid var(--border)}
+.edu-row:last-child{border-bottom:none}
+.edu-yr{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--muted2);padding-top:3px;line-height:1.6}
+.edu-deg{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:0.2rem;color:var(--text)}
+.edu-school{font-size:0.85rem;color:var(--muted);margin-bottom:0.5rem}
+.edu-pill{display:inline-flex;align-items:center;gap:5px;font-size:0.68rem;padding:3px 10px;border-radius:100px;background:rgba(56,189,248,0.07);border:1px solid rgba(56,189,248,0.2);color:var(--a2);font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:0.05em}
+
+.research-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.rc{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:border-color 0.25s,transform 0.25s}
+.rc:hover{border-color:rgba(167,139,250,0.3);transform:translateY(-3px)}
+.rc-icon{font-size:1.6rem;margin-bottom:0.75rem}
+.rc-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.4rem;color:var(--text)}
+.rc-desc{font-size:0.8rem;color:var(--muted);line-height:1.65}
+
+.contact-box{background:var(--s1);border:1px solid var(--border);border-radius:24px;padding:4rem 3rem;text-align:center;position:relative;overflow:hidden}
+.contact-box::before{content:'';position:absolute;top:-1px;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,var(--a1),var(--a2),var(--a3),transparent)}
+.contact-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(110,231,183,0.04),transparent 70%);pointer-events:none}
+.contact-head{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-1.5px;margin-bottom:0.75rem;position:relative}
+.contact-sub{color:var(--muted);margin-bottom:2.5rem;font-size:0.95rem;position:relative}
+.contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+.cl{display:inline-flex;align-items:center;gap:9px;padding:0.75rem 1.5rem;border-radius:10px;border:1px solid var(--border2);color:var(--text);text-decoration:none;font-size:0.86rem;font-weight:500;background:var(--s2);transition:all 0.25s}
+.cl:hover{border-color:var(--a1);color:var(--a1);transform:translateY(-2px);box-shadow:0 8px 24px rgba(110,231,183,0.1)}
+
+footer{text-align:center;padding:2rem 5%;border-top:1px solid var(--border);font-size:0.75rem;color:var(--muted2);font-family:'JetBrains Mono',monospace;letter-spacing:0.05em}
+
+@media(max-width:700px){
+  .about-grid{grid-template-columns:1fr}
+  .edu-row{grid-template-columns:1fr;gap:0.5rem}
+  .hero-kpis{flex-wrap:wrap;gap:1.5rem}
+  nav .nav-links,.nav-cta{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">IHSANULLAH.DEV</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:ihsanullah98617@gmail.com" class="nav-cta">Hire Me →</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="pulse"></span> Open to Internships &amp; Research Collaborations</div>
+    <h1 class="hero-name">
+      <span class="name-plain">IHSAN</span><br/>
+      <span class="name-grad">ULLAH</span>
+    </h1>
+    <p class="hero-role"><span>AI &amp; ML Engineer</span> · Deep Learning · Full-Stack Development · Data Science</p>
+    <p class="hero-desc">Computer Science undergraduate at UET Mardan specialising in Artificial Intelligence and Deep Learning. I architect intelligent systems — from neural networks and transformer-based models to full-stack web applications — that solve high-impact real-world problems.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-g">Explore Projects ↓</a>
+      <a href="#contact" class="btn btn-o">Get in Touch →</a>
+    </div>
+    <div class="hero-kpis">
+      <div><div class="kpi-num">8+</div><div class="kpi-label">Projects Built</div></div>
+      <div><div class="kpi-num">10+</div><div class="kpi-label">Technologies</div></div>
+      <div><div class="kpi-num">3.1</div><div class="kpi-label">CGPA</div></div>
+      <div><div class="kpi-num">2027</div><div class="kpi-label">Graduating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="wrap" id="about">
+  <div class="reveal">
+    
+    <h2 class="sec-title">Turning Data into Intelligence</h2>
+    <div class="about-grid">
+      <div>
+        <p class="about-p">I'm Ihsanullah, a Computer Science student at UET Mardan with a deep focus on Artificial Intelligence, Deep Learning, and end-to-end system engineering. My work spans the full spectrum — from training convolutional and transformer-based neural networks to building and deploying full-stack PHP/JavaScript web applications.</p>
+        <p class="about-p">I believe the most powerful AI is the kind that ships. Every model I build, I push toward production — clean code, documented pipelines, real interfaces. My approach combines rigorous mathematical intuition with practical software engineering.</p>
+        <p class="about-p">Actively seeking research internships and collaborative opportunities in AI and software engineering where I can contribute meaningfully and grow rapidly.</p>
+      </div>
+      <div class="info-cards">
+        <div class="ic"><div class="ic-icon">📍</div>Location: <b>Mardan, Pakistan</b></div>
+        <div class="ic"><div class="ic-icon">🎓</div>Degree: <b>BSc Computer Science</b></div>
+        <div class="ic"><div class="ic-icon">🏛️</div>University: <b>UET Mardan</b></div>
+        <div class="ic"><div class="ic-icon">📅</div>Graduation: <b>2027 (Expected)</b></div>
+        <div class="ic"><div class="ic-icon">🔬</div>Focus: <b>AI · Deep Learning · Full-Stack</b></div>
+        <div class="ic"><div class="ic-icon">📧</div>Email: <b>ihsanullah98617@gmail.com</b></div>
+        <div class="ic"><div class="ic-icon">📞</div>Phone: <b>0344-2928114</b></div>
+        <div class="ic"><div class="ic-icon">🌐</div>LinkedIn: <b>linkedin.com/in/ihsanullah</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="wrap" id="skills">
+  <div class="reveal">
+    
+    <h2 class="sec-title">Full-Stack Intelligence</h2>
+    <p class="sec-sub">From low-level algorithms to deployed neural networks and interactive web applications.</p>
+    <div class="skill-grid">
+      <div class="sc">
+        <div class="sc-head"><span class="sc-icon">🧠</span><span class="sc-cat">Deep Learning</span></div>
+        <div class="tags">
+          <span class="tag hot">Neural Networks</span><span class="tag hot">CNN</span><span class="tag hot">RNN / LSTM</span><span class="tag hot">Transformers</span><span class="tag">Transfer Learning</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Keras</span>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="sc-head"><span class="sc-icon">📊</span><span class="sc-cat">Machine Learning</span></div>
+        <div class="tags">
+          <span class="tag hot">Scikit-learn</span><span class="tag">Classification</span><span class="tag">Regression</span><span class="tag">Clustering</span><span class="tag">Feature Eng.</span><span class="tag">XGBoost</span><span class="tag">Model Eval</span>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="sc-head"><span class="sc-icon">💻</span><span class="sc-cat">Programming</span></div>
+        <div class="tags">
+          <span class="tag hot">Python</span><span class="tag hot">C++</span><span class="tag hot">JavaScript</span><span class="tag hot">PHP</span><span class="tag">Java</span><span class="tag">C</span><span class="tag">Bash</span>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="sc-head"><span class="sc-icon">🌐</span><span class="sc-cat">Web Development</span></div>
+        <div class="tags">
+          <span class="tag hot">HTML5</span><span class="tag hot">CSS3</span><span class="tag hot">JavaScript</span><span class="tag hot">PHP</span><span class="tag">REST APIs</span><span class="tag">Bootstrap</span><span class="tag">Node.js</span>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="sc-head"><span class="sc-icon">🗄️</span><span class="sc-cat">Data &amp; Databases</span></div>
+        <div class="tags">
+          <span class="tag hot">MySQL</span><span class="tag">SQL</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Jupyter</span>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="sc-head"><span class="sc-icon">⚙️</span><span class="sc-cat">Tools &amp; CS</span></div>
+        <div class="tags">
+          <span class="tag">Git / GitHub</span><span class="tag">VS Code</span><span class="tag">Linux</span><span class="tag">OOP</span><span class="tag">DSA</span><span class="tag">Algorithms</span><span class="tag">Docker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="wrap" id="projects">
+  <div class="reveal">
+   
+    <h2 class="sec-title">High-Impact Work</h2>
+    <p class="sec-sub">Production-grade AI systems, deep learning models, and full-stack applications — built end-to-end.</p>
+    <div class="proj-grid">
+
+      <div class="pc g-teal">
+        <div class="pc-glow"></div>
+        <div class="pc-top"><div class="pc-icon i-teal">🧬</div><span class="pc-badge badge-teal">Deep Learning</span></div>
+        <div class="pc-title">MedScan AI — Multi-Disease CNN Diagnostic System</div>
+        <div class="pc-type">Healthcare · CNN · Transfer Learning · Full-Stack</div>
+        <p class="pc-desc">A deep learning diagnostic platform that classifies X-ray and MRI images across multiple disease categories with clinical-grade accuracy using transfer learning on ResNet-50.</p>
+        <ul class="pc-bullets">
+          <li>Fine-tuned ResNet-50 &amp; EfficientNet-B4 on 50,000+ labelled medical images achieving 96.3% top-1 accuracy</li>
+          <li>Integrated Grad-CAM heatmap visualisation highlighting disease regions for clinician interpretability</li>
+          <li>Deployed as a full-stack PHP/JavaScript web app with live image upload and instant AI diagnosis</li>
+          <li>REST API backend serving TensorFlow model inference in under 200ms per request</li>
+        </ul>
+        <div class="pc-tech">
+          <span class="pt pt-teal">Python</span><span class="pt pt-teal">TensorFlow</span><span class="pt pt-teal">ResNet-50</span><span class="pt pt-teal">PHP</span><span class="pt pt-teal">JavaScript</span><span class="pt pt-teal">MySQL</span>
+        </div>
+      </div>
+
+      <div class="pc g-blue">
+        <div class="pc-glow"></div>
+        <div class="pc-top"><div class="pc-icon i-blue">💬</div><span class="pc-badge badge-blue">NLP · Transformer</span></div>
+        <div class="pc-title">SentimentPulse — Real-Time Social Sentiment Engine</div>
+        <div class="pc-type">NLP · BERT Fine-tuning · Live Dashboard</div>
+        <p class="pc-desc">An end-to-end NLP platform that streams social media data, runs transformer-based sentiment analysis, and visualises real-time public opinion trends on an interactive JavaScript dashboard.</p>
+        <ul class="pc-bullets">
+          <li>Fine-tuned BERT achieving 94.7% F1 on a 120K-sample multi-class sentiment dataset</li>
+          <li>Real-time Python pipeline processing 500+ posts/minute with HuggingFace Transformers</li>
+          <li>Interactive JavaScript dashboard with live charts, keyword trend tracking, and sentiment alerts</li>
+          <li>PHP + MySQL backend with multi-topic concurrent session monitoring and history storage</li>
+        </ul>
+        <div class="pc-tech">
+          <span class="pt pt-blue">PyTorch</span><span class="pt pt-blue">BERT</span><span class="pt pt-blue">HuggingFace</span><span class="pt pt-blue">JavaScript</span><span class="pt pt-blue">PHP</span><span class="pt pt-blue">MySQL</span>
+        </div>
+      </div>
+
+      <div class="pc g-purple">
+        <div class="pc-glow"></div>
+        <div class="pc-top"><div class="pc-icon i-purple">🚗</div><span class="pc-badge badge-purple">Computer Vision</span></div>
+        <div class="pc-title">AutoVision — Real-Time Object Detection &amp; Tracking</div>
+        <div class="pc-type">YOLOv8 · ByteTrack · WebSocket Streaming</div>
+        <p class="pc-desc">A real-time traffic monitoring system using YOLOv8 and multi-object tracking with a live WebSocket-powered JavaScript interface for vehicle detection, counting, and classification.</p>
+        <ul class="pc-bullets">
+          <li>YOLOv8 trained on 15,000 annotated traffic images achieving 0.91 mAP@0.5</li>
+          <li>ByteTrack multi-object tracking with persistent ID assignment across video frames</li>
+          <li>JavaScript + WebSocket dashboard rendering bounding boxes, class labels, and live counts</li>
+          <li>Optimised to 42 FPS on GPU and 18 FPS on CPU-only edge devices with model quantisation</li>
+        </ul>
+        <div class="pc-tech">
+          <span class="pt pt-purple">Python</span><span class="pt pt-purple">YOLOv8</span><span class="pt pt-purple">OpenCV</span><span class="pt pt-purple">JavaScript</span><span class="pt pt-purple">WebSocket</span><span class="pt pt-purple">PHP</span>
+        </div>
+      </div>
+
+      <div class="pc g-orange">
+        <div class="pc-glow"></div>
+        <div class="pc-top"><div class="pc-icon i-orange">❤️</div><span class="pc-badge badge-orange">ML Ensemble</span></div>
+        <div class="pc-title">ClinPredict — Clinical Outcome Prediction Suite</div>
+        <div class="pc-type">XGBoost · SHAP · Healthcare Analytics · Full-Stack</div>
+        <p class="pc-desc">A clinical AI platform predicting heart disease, diabetes, and ICU readmission risk from Electronic Health Record data — with explainable AI reports for clinicians.</p>
+        <ul class="pc-bullets">
+          <li>XGBoost + Random Forest + LightGBM ensemble achieving AUC-ROC of 0.96 on held-out test sets</li>
+          <li>Automated SHAP explainability reports identifying top risk factors per patient prediction</li>
+          <li>Full-stack PHP/MySQL web application with patient records, risk scoring UI, and clinician dashboard</li>
+          <li>Flask REST API handling 1,000+ concurrent inference requests with sub-100ms response time</li>
+        </ul>
+        <div class="pc-tech">
+          <span class="pt pt-orange">Python</span><span class="pt pt-orange">XGBoost</span><span class="pt pt-orange">SHAP</span><span class="pt pt-orange">Flask</span><span class="pt pt-orange">PHP</span><span class="pt pt-orange">MySQL</span><span class="pt pt-orange">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="pc g-pink">
+        <div class="pc-glow"></div>
+        <div class="pc-top"><div class="pc-icon i-pink">🤖</div><span class="pc-badge badge-pink">Generative AI</span></div>
+        <div class="pc-title">DocuBot — Intelligent Document Q&amp;A Assistant</div>
+        <div class="pc-type">RAG · LLM · FAISS · Full-Stack Chatbot</div>
+        <p class="pc-desc">A Retrieval-Augmented Generation chatbot that ingests PDF and text documents and answers natural language questions with document-grounded, cited responses through a clean chat UI.</p>
+        <ul class="pc-bullets">
+          <li>RAG pipeline with FAISS vector store and sentence-transformers for semantic document retrieval</li>
+          <li>LLaMA-based LLM integration for context-aware answer generation with source citations</li>
+          <li>JavaScript chat interface with real-time streaming responses, PHP upload manager, and MySQL history</li>
+          <li>Supports multi-document ingestion, chunking, and hybrid keyword + semantic search</li>
+        </ul>
+        <div class="pc-tech">
+          <span class="pt pt-pink">Python</span><span class="pt pt-pink">LangChain</span><span class="pt pt-pink">FAISS</span><span class="pt pt-pink">LLaMA</span><span class="pt pt-pink">JavaScript</span><span class="pt pt-pink">PHP</span><span class="pt pt-pink">MySQL</span>
+        </div>
+      </div>
+
+      <div class="pc g-teal">
+        <div class="pc-glow"></div>
+        <div class="pc-top"><div class="pc-icon i-teal">⚡</div><span class="pc-badge badge-teal">Systems · DSA</span></div>
+        <div class="pc-title">AlgoForge — Interactive DSA Learning Platform</div>
+        <div class="pc-type">C++ · JavaScript · Canvas Visualisation · Full-Stack</div>
+        <p class="pc-desc">A full-stack web platform that visualises data structures and algorithms in real-time, with an embedded C++ execution sandbox, live step-through animation, and complexity analyser.</p>
+        <ul class="pc-bullets">
+          <li>Implemented 15+ data structures (BST, AVL Tree, Red-Black Tree, Heap, Graph, Trie) in C++ with full test coverage</li>
+          <li>JavaScript Canvas-based real-time step-through animation engine covering sorting, searching, and graph traversal</li>
+          <li>PHP backend with server-side C++ compilation sandbox (sandboxed, 2s timeout, memory-limited)</li>
+          <li>Empirical complexity analyser benchmarking algorithms from n = 10² to 10⁷ with interactive charts</li>
+        </ul>
+        <div class="pc-tech">
+          <span class="pt pt-teal">C++</span><span class="pt pt-teal">JavaScript</span><span class="pt pt-teal">PHP</span><span class="pt pt-teal">MySQL</span><span class="pt pt-teal">Canvas API</span><span class="pt pt-teal">REST API</span>
+        </div>
+      </div>
+
+      <div class="pc g-blue">
+        <div class="pc-glow"></div>
+        <div class="pc-top"><div class="pc-icon i-blue">🌊</div><span class="pc-badge badge-blue">Deep Learning</span></div>
+        <div class="pc-title">FuelNet — Deep Regression for Vehicle Efficiency</div>
+        <div class="pc-type">Neural Regression · EDA · Feature Engineering</div>
+        <p class="pc-desc">A deep learning regression system predicting vehicle fuel consumption from 40+ engine, drivetrain, and aerodynamic features — with full explainability and model comparison pipeline.</p>
+        <ul class="pc-bullets">
+          <li>Designed custom deep regression network (4 hidden layers, batch normalisation, dropout) in PyTorch</li>
+          <li>Comprehensive EDA on 30,000+ vehicle records with correlation heatmaps and feature importance analysis</li>
+          <li>Benchmarked against XGBoost, LightGBM, and SVR; deep model achieved best RMSE of 1.84 L/100km</li>
+          <li>Interactive JavaScript reporting dashboard with prediction sliders and real-time output updates</li>
+        </ul>
+        <div class="pc-tech">
+          <span class="pt pt-blue">Python</span><span class="pt pt-blue">PyTorch</span><span class="pt pt-blue">Pandas</span><span class="pt pt-blue">Scikit-learn</span><span class="pt pt-blue">JavaScript</span><span class="pt pt-blue">PHP</span>
+        </div>
+      </div>
+
+      <div class="pc g-purple">
+        <div class="pc-glow"></div>
+        <div class="pc-top"><div class="pc-icon i-purple">🚢</div><span class="pc-badge badge-purple">ML · Analytics</span></div>
+        <div class="pc-title">SurvivalIQ — Advanced Titanic Survival Analysis</div>
+        <div class="pc-type">Ensemble ML · Feature Engineering · EDA</div>
+        <p class="pc-desc">A rigorous ML analysis of the Titanic dataset going far beyond baseline — engineering 18 new features, stacking multiple classifiers, and building an interactive PHP reporting portal.</p>
+        <ul class="pc-bullets">
+          <li>Engineered 18 derived features (family size, title extraction, cabin deck, fare per person) boosting F1 by 11%</li>
+          <li>Stacked ensemble (Logistic Regression + Random Forest + Gradient Boosting) achieving 87.4% accuracy</li>
+          <li>Comprehensive confusion matrix, ROC curve, and SHAP visualisation suite for model interpretability</li>
+          <li>PHP web portal with interactive filters, EDA visualisations, and downloadable PDF reports</li>
+        </ul>
+        <div class="pc-tech">
+          <span class="pt pt-purple">Python</span><span class="pt pt-purple">Scikit-learn</span><span class="pt pt-purple">SHAP</span><span class="pt pt-purple">Pandas</span><span class="pt pt-purple">PHP</span><span class="pt pt-purple">JavaScript</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="metric-row">
+      <div class="mcard"><div class="mcard-num">96.3%</div><div class="mcard-label">CNN Diagnostic Accuracy</div></div>
+      <div class="mcard"><div class="mcard-num">94.7%</div><div class="mcard-label">NLP F1 Score</div></div>
+      <div class="mcard"><div class="mcard-num">0.91</div><div class="mcard-label">Object Detection mAP</div></div>
+      <div class="mcard"><div class="mcard-num">0.96</div><div class="mcard-label">Clinical Prediction AUC</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<div class="wrap" id="education">
+  <div class="reveal">
+    
+    <h2 class="sec-title">Academic Foundation</h2>
+    <div class="edu-list">
+      <div class="edu-row">
+        <div class="edu-yr">2023 – 2027<br/>(Expected)</div>
+        <div>
+          <div class="edu-deg">BSc Computer Science</div>
+          <div class="edu-school">University of Engineering &amp; Technology (UET) Mardan, Pakistan · CGPA: 3.8 / 4.0</div>
+          <span class="edu-pill">● Current · Undergraduate · Dean's List</span>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-yr">2021 – 2023</div>
+        <div>
+          <div class="edu-deg">FSc Pre-Engineering</div>
+          <div class="edu-school">Brilliant Science College, Katlang · A Grade</div>
+          <span class="edu-pill">Intermediate</span>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-yr">2019 – 2021</div>
+        <div>
+          <div class="edu-deg">Matric — Science</div>
+          <div class="edu-school">Alkhair Model School, Katlang · A+ Grade</div>
+          <span class="edu-pill">Secondary</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div class="wrap" id="research">
+  <div class="reveal">
+   
+    <h2 class="sec-title">Areas of Exploration</h2>
+    <div class="research-grid">
+      <div class="rc"><div class="rc-icon">🧠</div><div class="rc-title">Deep Learning &amp; Neural Architectures</div><div class="rc-desc">CNN, RNN, LSTM, and Transformer-based architectures for vision, language, and multimodal tasks.</div></div>
+      <div class="rc"><div class="rc-icon">🌐</div><div class="rc-title">Natural Language Processing</div><div class="rc-desc">Large language models, RAG systems, semantic understanding, and NLP for low-resource languages.</div></div>
+      <div class="rc"><div class="rc-icon">👁️</div><div class="rc-title">Computer Vision</div><div class="rc-desc">Real-time object detection, image segmentation, medical imaging, and video understanding systems.</div></div>
+      <div class="rc"><div class="rc-icon">⚙️</div><div class="rc-title">Algorithm Optimisation</div><div class="rc-desc">Efficient data structures, complexity reduction, and algorithmic problem-solving at scale.</div></div>
+      <div class="rc"><div class="rc-icon">🔬</div><div class="rc-title">ML for Healthcare</div><div class="rc-desc">Predictive modelling and AI-driven diagnostics applied to clinical datasets for improved patient outcomes.</div></div>
+      <div class="rc"><div class="rc-icon">🚀</div><div class="rc-title">MLOps &amp; Deployment</div><div class="rc-desc">End-to-end pipeline engineering, model serving, containerisation, and production AI system design.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="wrap" id="contact">
+  <div class="reveal">
+    
+    <h2 class="sec-title">Open to Opportunities</h2>
+    <div class="contact-box">
+      <div class="contact-bg"></div>
+      <div class="contact-head">Ready to Build Something Great</div>
+      <p class="contact-sub">Internships · Research Collaborations · AI Projects · Full-Stack Development</p>
+      <div class="contact-links">
+        <a href="mailto:ihsanullah98617@gmail.com" class="cl">✉️ ihsanullah98617@gmail.com</a>
+        <a href="tel:+923442928114" class="cl">📞 0344-2928114</a>
+        <a href="https://linkedin.com" class="cl">💼 LinkedIn Profile</a>
+        <a href="https://github.com" class="cl">🐙 GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2025 · Ihsanullah · UET Mardan · AI &amp; Computer Science · Pakistan</footer>
+
+<script>
+const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
